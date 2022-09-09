@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_07_034413) do
+ActiveRecord::Schema.define(version: 2022_09_09_043715) do
 
   create_table "achievements", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name"
-    t.text "content"
-    t.integer "category"
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.text "content", null: false
+    t.integer "category", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 2022_09_07_034413) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.time "time"
-    t.text "content"
-    t.integer "category"
-    t.integer "user_id"
+    t.time "time", null: false
+    t.text "content", null: false
+    t.integer "category", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,15 +78,15 @@ ActiveRecord::Schema.define(version: 2022_09_07_034413) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "last_name"
-    t.string "first_name"
-    t.string "kana_first_name"
-    t.string "kana_last_name"
-    t.string "phone_number"
-    t.integer "level"
-    t.integer "exp_sum"
-    t.boolean "is_deleted"
-    t.integer "age"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "kana_first_name", null: false
+    t.string "kana_last_name", null: false
+    t.string "phone_number", null: false
+    t.integer "level", null: false
+    t.integer "exp_sum", null: false
+    t.boolean "is_deleted", default: false, null: false
+    t.date "birthday", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

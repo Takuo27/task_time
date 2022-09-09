@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="container">
+      <div class="row mt-5 mb-5">
+        <div class="col1 ml-5 mr-5">
+          <span></span>
+        </div>
+        <div class="col1">
+          <h3>マイページ</h3>
+        </div>
+    </div>
+    
+        <table class="table">
+            <tbody>
+                <tr></tr>
+                <tr>
+                    <td>会員名:</td>
+                    <td><%= @user.full_name %></td>
+                </tr>
+                <tr>
+                    <td><%= image_tag @user.image %></td>
+                </tr>
+                <tr>
+                  <td>Level:</td>
+                  <td><%= @user.level %></td>
+                </tr>
+                <tr>
+                  <td>Next level:</td>
+                </tr>
+                <tr>
+                  <td>タスク時間:</td>
+                </tr>
+            </tbody>
+        </table>
+    
+</div>

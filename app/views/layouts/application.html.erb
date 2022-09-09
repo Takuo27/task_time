@@ -11,6 +11,84 @@
   </head>
 
   <body>
+    <headr>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              
+              <!--会員ログインの場合-->
+              <% if user_signed_in? %>
+                  <li class="nav-item">
+                    マイページ 
+                    <!--アイコンは後で-->
+                      <i></i>
+                  </li>
+              
+                  <li class="nav-item">
+                   <i></i>
+                   タスク時間管理
+                  </li>
+                  
+                  <li class="nav-item">
+                   <i></i>
+                   目標一覧
+                  </li>
+                  
+                  <li class="nav-item">
+                    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                      <i></i>
+                  </li>
+                  
+              <!--管理者ログイン-->
+              <% elsif admin_signed_in? %>
+              
+                  <li class="nav-item">
+                   <i></i>
+                   <%= link_to '会員ログイン', new_customer_session_path %>
+                  </li>
+                  
+                  <li class="nav-item">
+                   <i></i>
+                   会員一覧
+                  </li>
+                  
+                  <li class="nav-item">
+                   <i></i>
+                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+                  </li>
+                  
+             <% else %>
+                
+                  <li class="nav-item">
+                     <i></i>
+                     About
+                  </li>
+                  
+                  <li class="nav-item">
+                     <i></i>
+                     <%= link_to '新規登録', new_user_registration_path %>
+                  </li>
+                    
+                  <li class="nav-item">
+                     <i></i>
+                     <%= link_to 'ログイン', new_user_session_path %>
+                  </li>
+                  
+            <% end %>
+              
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </headr>
     <%= yield %>
   </body>
 </html>
