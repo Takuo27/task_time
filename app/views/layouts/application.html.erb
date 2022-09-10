@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -14,7 +15,7 @@
     <headr>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -24,7 +25,7 @@
               <!--会員ログインの場合-->
               <% if user_signed_in? %>
                   <li class="nav-item">
-                    マイページ 
+                    <%= link_to 'マイページ', mypage_path(current_user.id) %>
                     <!--アイコンは後で-->
                       <i></i>
                   </li>
@@ -49,7 +50,7 @@
               
                   <li class="nav-item">
                    <i></i>
-                   <%= link_to '会員ログイン', new_customer_session_path %>
+                   <%= link_to '会員ログイン', new_user_session_path %>
                   </li>
                   
                   <li class="nav-item">

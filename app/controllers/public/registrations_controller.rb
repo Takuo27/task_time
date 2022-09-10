@@ -3,7 +3,7 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  before_action :authenticate_user!
   # GET /resource/sign_up
   # def new
   #   super
@@ -46,7 +46,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
   
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :phone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :phone_number, :birth_date, :image])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -64,17 +64,25 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   
+  protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+  
+  def birthday_join
+    date = params[:user][:birth_date]
+    if date["birth_date(1i)"].empty? && date["birth_date(2i)"].empty? && date["birth_date(3i)"].empty?
+      return
+    end
+    Date.new date["birtt_date(1i)"].to_i,date["birth_date(2i)"].to_i,date["birth_date(3i)"].to_i
+  end
+  
   def after_sign_up_path_for(resource)
     mypage_path
   end
 
   def after_update_path_for(resource)
     mypage_path
-  end
-  
-  protected
-  def update_resource(resource, params)
-    resource.update_without_password(params)
   end
 
 end

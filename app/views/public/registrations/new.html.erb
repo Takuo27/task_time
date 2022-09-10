@@ -24,10 +24,9 @@
             </tr>
             
             <tr>
-              <td><%= f.label :birthday, "生年月日" %></td>
+              <td><%= f.label :birth_date, "生年月日" %></td>
               <td>
-                  <%= f.date_select :birthday, {start_year: 1950, end_year: 2016,include_blank: true, use_two_digit_numbers: true},
-                  {class: "input-tab birthday-select"}%>
+                 <%= f.date_select :birth_date, {start_year: 1950, end_year: 2016, include_blank: true, use_two_digit_numbers: true}, {class: "input-tab birthday-select"} %>
               </td>
             </tr>
             
@@ -42,7 +41,7 @@
             </tr>
             
             <tr>
-              <td><%= f.label :profile_image, "プロフィール画像" %></td>
+              <td><%= f.label :image, "プロフィール画像" %></td>
               <td colspan="2"><%= f.file_field :image, accept: "image/*" %></td>
             </tr>
           
