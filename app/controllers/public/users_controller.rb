@@ -29,6 +29,10 @@ class Public::UsersController < ApplicationController
         @user = current_user
     end
     
+    def update_resource(resource, params)
+        resource.update_without_password(params)
+    end
+    
     def user_params
     params.require(:user).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :email, :phone_number, :birth_date, :image, :is_deleted)
     end

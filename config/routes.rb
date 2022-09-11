@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-  end
+
   devise_for :admin,skip: [:registrations, :passwords],controllers: {
   sessions: "admin/sessions"
   }
+  
+  namespace :admin do
+    get '/' => 'homes#top'
+    resources :users, only: [:index, :show, :edit, :update]
+  end
   
   devise_for :users,skip: [:passwords],controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
+  
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
@@ -21,10 +23,9 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+    
+    get 'times/top' => 'times#top'
+    resources :times, only: [:new, :index, :show, :edit, :update, :destroy]
   end
   
-  namespace :admin do
-    get '/' => 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
-  end
 end

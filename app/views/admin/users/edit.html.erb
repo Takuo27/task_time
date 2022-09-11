@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <h3>会員情報編集</h3>
+    </div>
+   
+    
+    <div class="row">
+        <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+           <table class="table　table-borderless table-sm mt-5 mb-5">
+               <div class="field">
+                <tr>
+                  <th><%= f.label :名前 %></th>
+                  <td><%= f.text_field :first_name %></td>
+                  <td><%= f.text_field :last_name %></td>
+                </tr>
+                </div>
+                
+                <div class="field">
+                  <tr>
+                    <th><%= f.label :フリガナ %></th>
+                    <td><%= f.text_field :kana_first_name %></td>
+                    <td><%= f.text_field :kana_last_name %></td>
+                  </tr>
+                </div>
+                
+                <div class="field">
+                  <tr>
+                    <th><%= f.label :電話番号 %></th>
+                    <td><%= f.text_field :phone_number %></td>
+                  </tr>
+                </div>
+                
+                <div class="field">
+                  <tr>
+                    <th><%= f.label :メールアドレス %></th>
+                    <td><%= f.text_field :email %></td>
+                  </tr>
+                </div>
+                
+                <div class="field">
+                    <tr>
+                        <th><%= f.label :生年月日 %></th>
+                        <td><%= f.date_select :birth_date %></td>
+                    </tr>
+                </div>
+                
+                <div class="field">
+                    <tr>
+                        <td><%= f.label :プロフィール画像 %></td>
+                        <%= image_tag @user.image, size: "200x200"  %>
+                        <td><%= f.file_field :image %></td>
+                    </tr>
+                </div>
+                
+                <div class="field">
+                  <tr>
+            					<td>会員ステータス</td>
+            					<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-active" %></td>
+            					<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
+            		　</tr>
+            		</div>
+                  
+                <div class="actions">
+                    <tr>
+                      <td><%= f.submit "編集内容を保存", class: "btn btn-success btn-sm mt-2" %></td>
+                    </tr>
+                </div>
+              
+           </table>
+        <% end %>
+    </div>
+</div>

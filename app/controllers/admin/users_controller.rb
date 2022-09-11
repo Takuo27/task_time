@@ -10,14 +10,21 @@ class Admin::UsersController < ApplicationController
    
   end
   
-  def edit
-    
-  end
   
   def update
+    if @user.update_without_current_password(user_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
   
   private
+  
+  
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
   
   def user_params
     params.require(:user).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :email, :phone_number, :birth_date, :image, :is_deleted)
