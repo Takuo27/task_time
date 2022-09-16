@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>新規タスク</h3>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_with model: @task, url: tasks_path, method: :post do |f| %>
+        <%= f.label :name, 'タスク名' %>
+        <%= f.text_field :name, autofocus: true, placeholder: "タスク名" %>
+        <%= f.label :content, 'タスク内容' %>
+        <%= f.text_area :content, placeholder: "内容" %>
+        <%= f.select :category, Task.categories.keys.map {|k| [I18n.t("enums.task.category.#{k}"), k]} %>
+        <%= f.submit '新規登録', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

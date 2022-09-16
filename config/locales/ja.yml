@@ -11,6 +11,21 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード(確認用)"
         current_password: "現在のパスワード"
+  enums:
+    task:
+      category:
+        study: "勉強"
+        work: "仕事"
+        life: "プライベート"
+      status:
+        waiting: "未開始"
+        doing: "進行中"
+        finished: "完了"
+    achievement:
+      category:
+        study: "勉強"
+        work: "仕事"
+        life: "プライベート"
   views:
     pagination:
       first: "≪"

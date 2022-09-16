@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+ 
   devise_for :admin,skip: [:registrations, :passwords],controllers: {
   sessions: "admin/sessions"
   }
@@ -24,8 +24,14 @@ Rails.application.routes.draw do
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
     
-    get 'times/top' => 'times#top'
-    resources :times, only: [:new, :index, :show, :edit, :update, :destroy]
+    resources :tasks, only: [:new, :index, :show, :edit, :update, :destroy]
+    get 'tasks/top' => 'tasks#top'
+    post '/tasks' => 'tasks#create'
+    # delete '/tasks' => 'tasks#destroy', as: 'destroy_task'
+    post '/tasks/:id/done' => 'tasks#done',   as: 'done'
+    
+    resources :achievements, only: [:new, :index, :create, :edit]
+    post '/achievements' => 'achievements#create'
   end
   
 end

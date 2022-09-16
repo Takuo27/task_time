@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <h1>タスク一覧</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>タスク名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+        <div class="form_group">
+          <tr>
+            <td><%= task.name %></td>
+          </tr>
+        </div>
+        
+        <div class="form_group">
+          <tr>
+            <td><%= task.content %></td>
+          </tr>
+        </div>
+        
+        <div class="form_group">
+          <tr>
+            <td><%= task.category %></td>
+          </tr>
+        </div>
+        
+        
+          <tr>
+            <td><%= link_to '編集', edit_task_path(task.id), class: "btn btn-success" %></td>
+          </tr>
+          
+          <tr>
+            <td><td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+          </tr>
+          <tr>
+              <% if task.status == "waiting" %>
+                <td><%= button_to '開始', done_path(task), method: :post %></td>
+              <% else %>
+                <td><%= button_to '完了', done_path(task), method: :post %></td>
+          </tr>
+            <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to '追加', new_task_path %>
+    </div>
+  </div>
