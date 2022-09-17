@@ -5,7 +5,11 @@ class Public::TasksController < ApplicationController
   def top
     @tasks = Task.all
     @user = current_user
-    @achievements.all
+    @achievements = Achievement.all
+    @today_task = @tasks.created_today
+    @yesterday_task = @tasks.created_yesterday
+    @this_week_task = @tasks.created_this_week
+    @last_week_task = @tasks.created_last_week
   end
   
   # タスク一覧

@@ -3,9 +3,12 @@ class Public::UsersController < ApplicationController
     before_action :set_current_user
     
     def show
+        @user = current_user
+        @level = (current_user.tasks.where(status: 2).count / 10).floor
     end
     
     def edit
+        @user = User.find(params[:id])
     end
     
     def update

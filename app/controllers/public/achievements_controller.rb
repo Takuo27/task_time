@@ -17,6 +17,13 @@ class Public::AchievementsController < ApplicationController
   end
   
   def edit
+    @achievement = Achievement.find(params[:id])
+  end
+  
+  def update
+    @achievement = Achievement.find(params[:id])
+    @achievement.update(achievement_params)
+    redirect_to achievements_path
   end
   
   private

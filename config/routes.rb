@@ -24,13 +24,13 @@ Rails.application.routes.draw do
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
     
-    resources :tasks, only: [:new, :index, :show, :edit, :update, :destroy]
+    resources :tasks, only: [:new, :index, :edit, :update, :destroy]
     get 'tasks/top' => 'tasks#top'
     post '/tasks' => 'tasks#create'
     # delete '/tasks' => 'tasks#destroy', as: 'destroy_task'
     post '/tasks/:id/done' => 'tasks#done',   as: 'done'
     
-    resources :achievements, only: [:new, :index, :create, :edit]
+    resources :achievements, only: [:new, :index, :create, :edit, :update]
     post '/achievements' => 'achievements#create'
   end
   

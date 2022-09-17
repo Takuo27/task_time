@@ -69,3 +69,4 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 gem 'pry-rails'
 gem 'simple_calendar', '~> 2.0' 
+gem "chartkick"
