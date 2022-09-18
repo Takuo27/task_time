@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_17_043643) do
+ActiveRecord::Schema.define(version: 2022_09_17_050256) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_09_17_043643) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "status", default: 0
+    t.datetime "start_time"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,7 +87,6 @@ ActiveRecord::Schema.define(version: 2022_09_17_043643) do
     t.string "phone_number", null: false
     t.boolean "is_deleted", default: false, null: false
     t.date "birth_date"
-    t.integer "level"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -5,6 +5,9 @@ class Public::UsersController < ApplicationController
     def show
         @user = current_user
         @level = (current_user.tasks.where(status: 2).count / 10).floor
+        # @x = @level % 10
+        @task_count = current_user.tasks.where(status: 2).count
+        @x = @task_count % 10
     end
     
     def edit

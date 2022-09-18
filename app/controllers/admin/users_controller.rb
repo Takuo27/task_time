@@ -7,7 +7,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-   
+   @user = current_user
+   @level = (current_user.tasks.where(status: 2).count / 10).floor
   end
   
   

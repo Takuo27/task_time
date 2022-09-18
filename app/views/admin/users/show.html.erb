@@ -30,6 +30,10 @@
 				<td colspan="2"><%= @user.phone_number %></td>
 			</tr>
 			<tr>
+				<td>レベル</td>
+				<td><%= @level %></td>
+			</tr>
+			<tr>
 				<td>会員ステータス</td>
 				<td colspan="2">
 					<% if @user.is_deleted == false %>

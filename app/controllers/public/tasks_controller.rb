@@ -5,6 +5,9 @@ class Public::TasksController < ApplicationController
   def top
     @tasks = Task.all
     @user = current_user
+    @level = (current_user.tasks.where(status: 2).count / 10).floor
+    @task_count = current_user.tasks.where(status: 2).count
+    @x = @task_count % 10
     @achievements = Achievement.all
     @today_task = @tasks.created_today
     @yesterday_task = @tasks.created_yesterday
@@ -14,8 +17,12 @@ class Public::TasksController < ApplicationController
   
   # タスク一覧
   def index
+    @user = current_user
     @tasks = Task.all
-    
+    @task = Task.new
+    @task1 = Task.where(category: "study").page(params[:page]).limit(2)
+    @task2 = Task.where(category: "work").page(params[:page]).limit(2)
+    @task3 = Task.where(category: "life").page(params[:page]).limit(2)
   end
   
   # タスク新規登録画面
@@ -69,6 +76,6 @@ class Public::TasksController < ApplicationController
   
    private
     def task_params
-      params.require(:task).permit(:name, :content, :category)
+      params.require(:task).permit(:name, :content, :category, :start_time)
     end
 end

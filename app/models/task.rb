@@ -13,4 +13,7 @@ class Task < ApplicationRecord
     scope :created_4days, -> { where(created_at: 4.days.ago.all_day) } 
     scope :created_5days, -> { where(created_at: 5.days.ago.all_day) } 
     scope :created_6days, -> { where(created_at: 6.days.ago.all_day) } 
+    
+   
+    
 end

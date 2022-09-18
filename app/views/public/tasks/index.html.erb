@@ -1,50 +1,72 @@
-<div class="container">
+<div class='container px-5 px-sm-0'>
   <div class="row">
-    <h1>タスク一覧</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>タスク名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @tasks.each do |task| %>
-        <div class="form_group">
-          <tr>
-            <td><%= task.name %></td>
-          </tr>
-        </div>
-        
-        <div class="form_group">
-          <tr>
-            <td><%= task.content %></td>
-          </tr>
-        </div>
-        
-        <div class="form_group">
-          <tr>
-            <td><%= task.category %></td>
-          </tr>
-        </div>
-        
-        
-          <tr>
-            <td><%= link_to '編集', edit_task_path(task.id), class: "btn btn-success" %></td>
-          </tr>
-          
-          <tr>
-            <td><td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-          </tr>
-          <tr>
-              <% if task.status == "waiting" %>
-                <td><%= button_to '開始', done_path(task), method: :post %></td>
-              <% else %>
-                <td><%= button_to '完了', done_path(task), method: :post %></td>
-          </tr>
-            <% end %>
-        <% end %>
-      </tbody>
-    </table>
-    <%= link_to '追加', new_task_path %>
+    <ul class="tab-list list-unstyled">
+      <li class="tab tab-active">
+        勉強
+      </li>
+      <li class="tab">
+        仕事
+      </li>
+      <li class="tab">
+        プライベート
+      </li>
+    </ul>
+    <!--タブで選択された要素部分-->
+    <div class="tabbox-contents">
+      <div class="tabbox box-show">
+        <%= render 'task1', task1: @task1 %>
+      </div>
+      <div class="tabbox">
+        <%= render 'task2', task2: @task2 %>
+      </div>
+      <div class="tabbox">
+        <%= render 'task3', task3: @task3 %>
+      </div>
     </div>
+
+<%
+=begin
+%>
+      <!--カテゴリー（勉強）-->
+      <%= render 'task1', task1: @task1 %>
+      
+      <!--カテゴリー（仕事）-->
+      <%= render 'task2', task2: @task2 %>
+      
+      <!--カテゴリー（プライベート）-->
+      <%= render 'task3', task3: @task3 %>
+      
+      <%= link_to '追加', new_task_path %>
+<%
+=end
+%>
+
+      <script>
+        // タブの切り替え
+          $(document).on('turbolinks:load', function() {
+            $(function() {
+              $('.tab').click(function(){
+                $('.tab-active').removeClass('tab-active');
+                $(this).addClass('tab-active');
+                $('.box-show').removeClass('box-show');
+                const index = $(this).index();
+                $('.tabbox').eq(index).addClass('box-show');
+              });
+            });
+          });
+      </script>
+
   </div>
+    　<!--タスクカレンダー-->
+      <%= month_calendar events: @tasks do |date, tasks| %>
+         <%= date.day %>
+         <% tasks.each do |task| %>
+            <div>
+              <%= task.name %>
+              
+            </div>
+          <% end %>
+      <% end %>
+</div>
+
+  

@@ -1,20 +1,17 @@
-<div class="container">
+<div class='container px-5 px-sm-0'>
   <div class="row">
-    <div class="col-md-3">
-      <h3>新規タスク</h3>
-    </div>
-  </div>
-  
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <%= form_with model: @task, url: tasks_path, method: :post do |f| %>
-        <%= f.label :name, 'タスク名' %>
-        <%= f.text_field :name, autofocus: true, placeholder: "タスク名" %>
-        <%= f.label :content, 'タスク内容' %>
-        <%= f.text_area :content, placeholder: "内容" %>
-        <%= f.select :category, Task.categories.keys.map {|k| [I18n.t("enums.task.category.#{k}"), k]} %>
-        <%= f.submit '新規登録', class: 'btn btn-success' %>
-      <% end %>
+    <div class="col-md-8 offset-md-1">
+      <h2>新規タスク登録</h2>
+            <%= form_with model: @task, url: tasks_path, method: :post do |f| %>
+              <%= f.label :name, 'タスク名:' %>
+              <%= f.text_field :name, autofocus: true, placeholder: "タスク名" %>
+              <%= f.label :content, 'タスク内容:' %>
+              <%= f.text_area :content, placeholder: "内容" %>
+              <%= f.select :category, Task.categories.keys.map {|k| [I18n.t("enums.task.category.#{k}"), k]} %>
+              <%= f.label :start_time, "開始日:" %>
+              <%= f.datetime_field  :start_time %>
+              <%= f.submit '新規登録', class: 'btn btn-success' %>
+            <% end %>
     </div>
   </div>
 </div>

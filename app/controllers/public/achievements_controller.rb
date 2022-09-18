@@ -13,7 +13,11 @@ class Public::AchievementsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @achievements = Achievement.all
+    @achievement1 = Achievement.where(category: "study").page(params[:page]).limit(5)
+    @achievement2 = Achievement.where(category: "work").page(params[:page]).limit(5)
+    @achievement3 = Achievement.where(category: "life").page(params[:page]).limit(5)
   end
   
   def edit

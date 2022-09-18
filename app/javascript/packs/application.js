@@ -12,7 +12,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application" 
-import '@fortawesome/fontawesome-free/js/all'
+// import '@fortawesome/fontawesome-free/js/all'
 require("chartkick") 
 require("chart.js") 
 
@@ -20,3 +20,5 @@ require("chart.js")
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+

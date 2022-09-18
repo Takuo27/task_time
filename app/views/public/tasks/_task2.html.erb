@@ -1,0 +1,32 @@
+ <div class='col-md-8 offset-md-1'>
+          <table class='table table-hover table-inverse'>
+              <thead>
+                <tr>
+                  <th>タスク名</th>
+                  <th>内容</th>
+                  <th>日時</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                 <!--カテゴリー（勉強）-->
+                <div class="category bg-danger">仕事</div>
+                  <% task2.each do |task| %>
+                    <tr>
+                    <td><%= task.name %></td>
+                    <td><%= task.content %></td>
+                    <td><%= task.start_time.strftime("%Y年%m月%d日") %></td>
+                    <td><%= link_to '編集', edit_task_path(task.id), class: "btn btn-success" %></td>
+                    <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+                    
+                    <% if task.status == "waiting" %>
+                        <td><%= button_to '開始', done_path(task), method: :post %></td>
+                      <% else %>
+                        <td><%= button_to '完了', done_path(task), method: :post %></td>
+                     <% end %>
+                <% end %>
+                 <%= paginate task2 %>
+              </tbody>
+          </table>
+     </div>

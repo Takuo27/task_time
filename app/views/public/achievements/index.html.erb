@@ -1,39 +1,44 @@
 <div class="container">
-    <div class="row">
-        <h2>目標一覧</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>目標名</th>
-                </tr>
-              </thead>
-              <tbody>
-                    <% @achievements.each do |achievement| %>
-                    <div class="form_group">
-                      <tr>
-                        <td><%= achievement.name %></td>
-                      </tr>
-                    </div>
-                    
-                    <div class="form_group">
-                      <tr>
-                        <td><%= achievement.content %></td>
-                      </tr>
-                    </div>
-                    
-                    <div class="form_group">
-                      <tr>
-                        <td><%= achievement.category %></td>
-                      </tr>
-                    </div>
-                    
-                    
-                      <tr>
-                        <td><%= link_to '編集', edit_achievement_path(achievement.id), class: "btn btn-success" %></td>
-                      </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        <%= link_to '追加', new_achievement_path %>
+  <div class="row">
+    <h3>目標一覧</h2>
+      <ul class="tab-list list-unstyled">
+        <li class="tab tab-active">
+          勉強
+        </li>
+        <li class="tab">
+          仕事
+        </li>
+        <li class="tab">
+          プライベート
+        </li>
+      </ul>
+    <!--タブで選択された要素部分-->
+    <div class="tabbox-contents">
+      <div class="tabbox box-show">
+        <%= render 'achievement1', achievement1: @achievement1 %>
+      </div>
+      <div class="tabbox">
+        <%= render 'achievement2', achievement2: @achievement2 %>
+      </div>
+      <div class="tabbox">
+        <%= render 'achievement3', achievement3: @achievement3 %>
+      </div>
     </div>
+        <%= link_to '追加', new_achievement_path %>
+    
+    <script>
+    // タブの切り替え
+      $(document).on('turbolinks:load', function() {
+        $(function() {
+          $('.tab').click(function(){
+            $('.tab-active').removeClass('tab-active');
+            $(this).addClass('tab-active');
+            $('.box-show').removeClass('box-show');
+            const index = $(this).index();
+            $('.tabbox').eq(index).addClass('box-show');
+          });
+        });
+      });
+  </script>
+  </div>
 </div>
