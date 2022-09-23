@@ -1,35 +1,33 @@
-<div class="container">
-    <div class="container">
-      <div class="row mt-5 mb-5">
-        <div class="col1 ml-5 mr-5">
-          <span></span>
+ <main class="bg-secondary">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <div class="card">
+          <%= image_tag @user.image, class: "rounded-circle img-fluid" %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              会員ID：<%= @user.id %>
+            </li>
+            <li class="list-group-item">
+              会員名：<%= @user.full_name %>
+            </li>
+            <li class="list-group-item">
+              Level：<%= @level %>
+            </li>
+            <li class="list-group-item">
+              Next level:
+              <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: <%= @x * 10 %>%" aria-valuenow="<%= @x * 10 %>" aria-valuemin="0" aria-valuemax="100"><%= @x %></div>
+              </div>
+            </li>
+          </ul>
+          <div class="card-body text-center">
+            <%= link_to edit_information_path do %>
+               <i class="fas fa-edit"></i>
+            <% end %>
+          </div>
         </div>
-        <div class="col1">
-          <h3>マイページ</h3>
-        </div>
-        <%= image_tag @user.image %>
+      </div>
     </div>
-    
-        <table class="table">
-            <tbody>
-                <tr></tr>
-                <tr>
-                    <td>会員名:</td>
-                    <td><%= @user.full_name %></td>
-                </tr>
-                <tr>
-                  <td>Level:</td>
-                  <td><%= @level %></td>
-                </tr>
-                <tr>
-                  <td>Next level:</td>
-                  <td>
-                   <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: <%= @x * 10 %>%" aria-valuenow="<%= @x * 10 %>" aria-valuemin="0" aria-valuemax="100"><%= @x %></div>
-                    </div>
-                  </td>
-                </tr>
-            </tbody>
-        </table>
-    <%= link_to "編集",  edit_information_path, class: 'btn btn-success btn-sm' %>
-</div>
+  </div>
+</main> 

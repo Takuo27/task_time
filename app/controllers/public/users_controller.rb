@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
     end
     
     def edit
-        @user = User.find(params[:id])
+       
     end
     
     def update
@@ -40,6 +40,6 @@ class Public::UsersController < ApplicationController
     end
     
     def user_params
-    params.require(:user).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :email, :phone_number, :birth_date, :image, :is_deleted)
+    params.require(:user).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :email, :phone_number, :image, :is_deleted)
     end
 end

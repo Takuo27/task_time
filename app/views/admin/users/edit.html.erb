@@ -1,72 +1,44 @@
-<div class="container">
+  <main class="bg-secondary">
+  <div class="container py-5">
     <div class="row">
-        <h3>会員情報編集</h3>
+      <div class="col text-center">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">会員情報編集</div>
+              <ul class="list-group list-group-flush">
+                <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+                  <li class="list-group-item">
+                    <%= f.label :名前 %>
+                    <%= f.text_field :first_name, {class: "form-control"} %>
+                    <%= f.text_field :last_name, {class: "form-control"} %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :フリガナ %>
+                    <%= f.text_field :kana_first_name, {class: "form-control"} %>
+                    <%= f.text_field :kana_last_name, {class: "form-control"} %>
+                  </li>
+                  <li class="list-group-item">
+                     <%= f.label :電話番号 %>
+                     <%= f.text_field :phone_number, {class: "form-control"} %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :メールアドレス %>
+                    <%= f.text_field :email, {class: "form-control"} %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :プロフィール画像 %>
+                    <%= image_tag @user.image, class: "card-img-top" %>
+                    <%= f.file_field :image, class: "ml-5 mt-5" %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm mt-2" %>
+                    <%= link_to "退会する", confirm_unsubscribe_path, class: 'btn btn-danger btn-sm mt-2 ml-5' %>
+                  </li>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+      </div>
     </div>
-   
-    
-    <div class="row">
-        <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
-           <table class="table　table-borderless table-sm mt-5 mb-5">
-               <div class="field">
-                <tr>
-                  <th><%= f.label :名前 %></th>
-                  <td><%= f.text_field :first_name %></td>
-                  <td><%= f.text_field :last_name %></td>
-                </tr>
-                </div>
-                
-                <div class="field">
-                  <tr>
-                    <th><%= f.label :フリガナ %></th>
-                    <td><%= f.text_field :kana_first_name %></td>
-                    <td><%= f.text_field :kana_last_name %></td>
-                  </tr>
-                </div>
-                
-                <div class="field">
-                  <tr>
-                    <th><%= f.label :電話番号 %></th>
-                    <td><%= f.text_field :phone_number %></td>
-                  </tr>
-                </div>
-                
-                <div class="field">
-                  <tr>
-                    <th><%= f.label :メールアドレス %></th>
-                    <td><%= f.text_field :email %></td>
-                  </tr>
-                </div>
-                
-                <div class="field">
-                    <tr>
-                        <th><%= f.label :生年月日 %></th>
-                        <td><%= f.date_select :birth_date %></td>
-                    </tr>
-                </div>
-                
-                <div class="field">
-                    <tr>
-                        <td><%= f.label :プロフィール画像 %></td>
-                        <%= image_tag @user.image, size: "200x200"  %>
-                        <td><%= f.file_field :image %></td>
-                    </tr>
-                </div>
-                
-                <div class="field">
-                  <tr>
-            					<td>会員ステータス</td>
-            					<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-active" %></td>
-            					<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
-            		　</tr>
-            		</div>
-                  
-                <div class="actions">
-                    <tr>
-                      <td><%= f.submit "編集内容を保存", class: "btn btn-success btn-sm mt-2" %></td>
-                    </tr>
-                </div>
-              
-           </table>
-        <% end %>
-    </div>
-</div>
+  </div>
+</main>

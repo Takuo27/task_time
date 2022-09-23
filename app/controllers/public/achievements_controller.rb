@@ -14,10 +14,10 @@ class Public::AchievementsController < ApplicationController
 
   def index
     @user = current_user
-    @achievements = Achievement.all
-    @achievement1 = Achievement.where(category: "study").page(params[:page]).limit(5)
-    @achievement2 = Achievement.where(category: "work").page(params[:page]).limit(5)
-    @achievement3 = Achievement.where(category: "life").page(params[:page]).limit(5)
+    @achievements = current_user.achievements.all
+    @achievement1 = current_user.achievements.where(category: "study").page(params[:achievement1_page]).per(3)
+    @achievement2 = current_user.achievements.where(category: "work").page(params[:achievement2_page]).per(3)
+    @achievement3 = current_user.achievements.where(category: "life").page(params[:achievement3_page]).per(3)
   end
   
   def edit
@@ -27,6 +27,13 @@ class Public::AchievementsController < ApplicationController
   def update
     @achievement = Achievement.find(params[:id])
     @achievement.update(achievement_params)
+    redirect_to achievements_path
+  end
+  
+  def destroy
+    achievement = Achievement.find(params[:id])
+    achievement.user_id = current_user.id
+    achievement.destroy
     redirect_to achievements_path
   end
   

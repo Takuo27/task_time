@@ -1,26 +1,33 @@
-<table class="admin_user_index has_border">
-	<thead>
-		<th>会員ID</th>
-		<th>名前</th>
-		<th>フリガナ</th>
-		<th>会員ステータス</th>
-		<th></th>
+
+<table class="table table-hover ">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">画像</th>
+			<th scope="col">会員ID</th>
+			<th scope="col">名前</th>
+			<th scope="col">フリガナ</th>
+			<th scope="col">会員ステータス</th>
+			<th scope="col"></th>
+		</tr>
 	</thead>
-	<tbody>
+	<tbody class="bg-light">
 		<% users.each do |user| %>
-			<tr>
-				<td><%= user.id %></td>
-				<td><%= user.full_name %></td>
-				<td><%= user.full_name_kana %></td>
-				<td>
-					<% if user.is_deleted %>
-						<span class="text-invalid">退会済み</span>
-					<% else %>
-						<span class="text-active">有効</span>	
-					<% end %>
-				</td>
-				<td><%= link_to "詳細", admin_user_path(user), class: "btn btn-primary" %></td>
-			</tr>
+			<%= link_to admin_user_path(user) do %>
+				<tr>
+					<td><%= image_tag user.image, size:'150x150', class: "d-block mx-auto" %></td>
+					<td><%= user.id %></td>
+					<td><%= user.full_name %></td>
+					<td><%= user.full_name_kana %></td>
+					<td>
+						<% if user.is_deleted %>
+							<span class="text-invalid">退会済み</span>
+						<% else %>
+							<span class="text-active">有効</span>	
+						<% end %>
+					</td>
+					<td><%= link_to "詳細", admin_user_path(user), class: "btn btn-primary" %></td>
+				</tr>
+			<% end %>
 		<% end %>
 	</tbody>
 </table>

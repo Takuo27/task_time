@@ -46,7 +46,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
   
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :phone_number, :birth_date, :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :phone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -69,14 +69,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   protected
   def update_resource(resource, params)
     resource.update_without_password(params)
-  end
-  
-  def birthday_join
-    date = params[:user][:birth_date]
-    if date["birth_date(1i)"].empty? && date["birth_date(2i)"].empty? && date["birth_date(3i)"].empty?
-      return
-    end
-    Date.new date["birtt_date(1i)"].to_i,date["birth_date(2i)"].to_i,date["birth_date(3i)"].to_i
   end
   
   def after_sign_up_path_for(resource)

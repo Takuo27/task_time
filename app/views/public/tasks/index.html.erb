@@ -1,72 +1,80 @@
-<div class='container px-5 px-sm-0'>
+<div class="container my-5">
   <div class="row">
-    <ul class="tab-list list-unstyled">
-      <li class="tab tab-active">
-        勉強
-      </li>
-      <li class="tab">
-        仕事
-      </li>
-      <li class="tab">
-        プライベート
-      </li>
-    </ul>
-    <!--タブで選択された要素部分-->
-    <div class="tabbox-contents">
-      <div class="tabbox box-show">
-        <%= render 'task1', task1: @task1 %>
-      </div>
-      <div class="tabbox">
-        <%= render 'task2', task2: @task2 %>
-      </div>
-      <div class="tabbox">
-        <%= render 'task3', task3: @task3 %>
+    <div class="card">
+      <div class="card-header"><strong>タスク一覧</strong></div>
+      <div class="card-body">
+        <ul class="tab-list list-inline">
+          <li class="tab tab-active">
+            勉強
+          </li>
+          <li class="tab">
+            仕事
+          </li>
+          <li class="tab">
+            プライベート
+          </li>
+        </ul>
       </div>
     </div>
-
-<%
-=begin
-%>
-      <!--カテゴリー（勉強）-->
-      <%= render 'task1', task1: @task1 %>
-      
-      <!--カテゴリー（仕事）-->
-      <%= render 'task2', task2: @task2 %>
-      
-      <!--カテゴリー（プライベート）-->
-      <%= render 'task3', task3: @task3 %>
-      
-      <%= link_to '追加', new_task_path %>
-<%
-=end
-%>
-
-      <script>
-        // タブの切り替え
-          $(document).on('turbolinks:load', function() {
-            $(function() {
-              $('.tab').click(function(){
-                $('.tab-active').removeClass('tab-active');
-                $(this).addClass('tab-active');
-                $('.box-show').removeClass('box-show');
-                const index = $(this).index();
-                $('.tabbox').eq(index).addClass('box-show');
-              });
-            });
-          });
-      </script>
-
-  </div>
-    　<!--タスクカレンダー-->
-      <%= month_calendar events: @tasks do |date, tasks| %>
-         <%= date.day %>
-         <% tasks.each do |task| %>
-            <div>
-              <%= task.name %>
-              
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+           <!--タブで選択された要素部分-->
+          <div class="tabbox-contents">
+            <div class="tabbox box-show">
+              <%= render 'task1', task1: @task1 %>
             </div>
+            <div class="tabbox">
+              <%= render 'task2', task2: @task2 %>
+            </div>
+            <div class="tabbox">
+              <%= render 'task3', task3: @task3 %>
+            </div>
+          </div>
+          <%= link_to new_task_path do %>
+            <i class="fas fa-plus"></i>
           <% end %>
-      <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   <!--タスクカレンダー-->
+  <div class="row mb-2">
+    <div class="col text-center mt-3">
+      <div class="card">
+        <div class="card-body">
+          <%= month_calendar events: @tasks do |date, tasks| %>
+             <%= date.day %>
+             <%= link_to new_task_path do %>
+              <i class="fas fa-plus"></i>
+             <% end %>
+             <% tasks.each do |task| %>
+                <div>
+                  <%= task.name %>
+                  
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-  
+
+<script>
+  // タブの切り替え
+    $(document).on('turbolinks:load', function() {
+      $(function() {
+        $('.tab').click(function(){
+          $('.tab-active').removeClass('tab-active');
+          $(this).addClass('tab-active');
+          $('.box-show').removeClass('box-show');
+          const index = $(this).index();
+          $('.tabbox').eq(index).addClass('box-show');
+        });
+      });
+    });
+</script>
+

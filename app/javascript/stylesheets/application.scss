@@ -1,6 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-// @import "simple_calendar";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
 
 .simple-calendar {
  .day {}
@@ -54,3 +54,4 @@
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
 }
+

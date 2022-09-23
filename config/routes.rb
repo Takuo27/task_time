@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
- 
-  devise_for :admin,skip: [:registrations, :passwords],controllers: {
-  sessions: "admin/sessions"
-  }
-  
-  namespace :admin do
-    get '/' => 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
-  end
-  
   devise_for :users,skip: [:passwords],controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
+ 
+ 
+  devise_for :admin,skip: [:registrations, :passwords],controllers: {
+  sessions: "admin/sessions"
+  }
+
+  namespace :admin do
+    get '/' => 'homes#top'
+    resources :users, only: [:index, :show, :edit, :update]
+  end
   
   scope module: :public do
     root to: 'homes#top'
@@ -30,8 +30,9 @@ Rails.application.routes.draw do
     # delete '/tasks' => 'tasks#destroy', as: 'destroy_task'
     post '/tasks/:id/done' => 'tasks#done',   as: 'done'
     
-    resources :achievements, only: [:new, :index, :create, :edit, :update]
+    resources :achievements, only: [:new, :index, :create, :edit, :update, :destroy]
     post '/achievements' => 'achievements#create'
+    # delete '/achievements' => 'achievements#destroy'
   end
   
 end

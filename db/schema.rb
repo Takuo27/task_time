@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_17_050256) do
+ActiveRecord::Schema.define(version: 2022_09_20_062948) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(version: 2022_09_17_050256) do
     t.string "kana_last_name", null: false
     t.string "phone_number", null: false
     t.boolean "is_deleted", default: false, null: false
-    t.date "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

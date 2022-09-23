@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ */
+ 
+ html{
+  position: relative;
+  min-height: 100%;
+ }
+ 
+ body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  // grid-template-columns: 100%;
+  min-height: 100vh;
+  margin-bottom: 60px;
+ }
+ 
+ header {
+  height: 100px;
+ }
+ 
+ main {
+  // padding-bottom: 200px;
+  height: 100%;
+ }
+ 
+//  .push {
+//   height: 60px;/*フッターと同じ高さに指定*/
+// }
+ 
+ footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  margin-bottom: -60px;
+}
+ 
+ 
+.img1 {
+ background-image:image-url("homework-3235100_1280.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ text-align: center;
+ width: 100%;
+ height: 100vh;
+}
+
+.img2 {
+ background-image:image-url("todo-lists-5238324_1920.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ text-align: center;
+ width: 100%;
+ height: 100vh;
+}
+
+.img3 {
+ background-image:image-url("paper-3175183_1920.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ text-align: center;
+ width: 100%;
+ height: 100vh;
+}
+
+.img4 {
+ background-image:image-url("paper-3094007_1920.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ text-align: center;
+ width: 100%;
+ height: 100vh;
+}

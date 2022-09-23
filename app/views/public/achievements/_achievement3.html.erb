@@ -1,25 +1,31 @@
-<div class='col-md-8 offset-md-1'>
-      <table class='table table-hover table-inverse'>
-          <thead>
-            <tr>
-              <th>目標名名</th>
-              <th>内容</th>
-              <th colspan="2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            
-             <!--カテゴリー（勉強）-->
-            <div class="category bg-primary">プライベート</div>
-              <% achievement3.each do |achievement| %>
-                <tr>
-                <td><%= achievement.name %></td>
-                <td><%= achievement.content %></td>
-                <td><%= link_to '編集', edit_achievement_path(achievement.id), class: "btn btn-success" %></td>
-                <td><%= link_to '削除', achievement, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-                
+<table class='table table-hover table-bordered'>
+    <thead>
+      <tr>
+        <th scope="col">目標名名</th>
+        <th scope="col">内容</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      
+       <!--カテゴリー（プライベート）-->
+      <div class="category bg-primary">プライベート</div>
+        <% achievement3.each do |achievement| %>
+          <tr>
+          <td><%= achievement.name %></td>
+          <td><%= achievement.content %></td>
+          <td>
+            <%= link_to edit_achievement_path(achievement.id) do %>
+              <i class="fas fa-edit"></i>
             <% end %>
-            <%= paginate achievement3 %>
-          </tbody>
-      </table>
- </div>
+          </td>
+          <td>
+            <%= link_to achievement_path(achievement), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </td>
+          
+      <% end %>
+      <%= paginate achievement3, param_name: :achievement3_page %>
+    </tbody>
+</table>

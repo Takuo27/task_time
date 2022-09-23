@@ -1,5 +1,10 @@
-<section class="inner">
-	<h2 class="section-ttl">会員一覧</h2>
-	<%= render 'index', users: @users %>
-	<%= paginate @users %>
-</section>
+<main class="bg-secondary">
+	<div class="container text-center">
+	
+			<h2 class="my-3 ml-3">会員一覧</h2>
+			
+			<%= render 'index', users: @users %>
+			<%= paginate @users %>
+	
+	</div>
+</main>
