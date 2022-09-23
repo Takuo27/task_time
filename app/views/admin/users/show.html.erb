@@ -1,36 +1,40 @@
-
 <main class="bg-secondary">
 	<div class="container">
-		<div class="row　bg-secondary">
-			<div class="card text-center">
-				<%= image_tag @user.image, class: "card-image-top" %>
-				<div class="card-body">
-					<div class="card-title text-decoration-underline"><%= @user.full_name %>さんのページ</div>
+		<div class="row">
+			<div class="col-mb-6 col-lg-8 mx-auto text-center mt-5">
+				<div class="card">
+					<%= image_tag @user.image, class: "card-image-top" %>
+					<div class="card-body">
+						<div class="card-title text-decoration-underline"><%= @user.full_name %>さんのページ</div>
+					</div>
+					<ul class="list-group list-group-flush">
+					    <li class="list-group-item">
+					    	会員ID：<%= @user.id %>
+					    </li>
+					    <li class="list-group-item">
+			              会員名：<%= @user.full_name %>
+			            </li>
+					    <li class="list-group-item">
+					    	メールアドレス：<%= @user.email %>
+					    </li>
+					    <li class="list-group-item">
+					    	電話番号：<%= @user.phone_number %>
+					    </li>
+					    <li class="list-group-item">
+					    	レベル：<%= @level %>
+					    </li>
+					    <li class="list-group-item">会員ステータス：
+					    	<% if @user.is_deleted == false %>
+								<span class="text-active">有効	</span>					
+							<% else %>
+								<span class="text-invalid">退会済み</span>
+							<% end %>
+					    </li>
+					    <li class="list-group-item">
+					    	<%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-success" %>
+					    </li>
+					</ul>
 				</div>
-				<ul class="list-group list-group-flush">
-				    <li class="list-group-item">
-				    	会員ID：<%= @user.id %>
-				    </li>
-				    <li class="list-group-item">
-				    	メールアドレス：<%= @user.email %>
-				    </li>
-				    <li class="list-group-item">
-				    	電話番号：<%= @user.phone_number %>
-				    </li>
-				    <li class="list-group-item">
-				    	レベル：<%= @level %>
-				    </li>
-				    <li class="list-group-item">会員ステータス：
-				    	<% if @user.is_deleted == false %>
-							<span class="text-active">有効	</span>					
-						<% else %>
-							<span class="text-invalid">退会済み</span>
-						<% end %>
-				    </li>
-				    <li class="list-group-item">
-				    	<%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-success" %>
-				    </li>
-				</ul>
 			</div>
 		</div>
 	</div>
