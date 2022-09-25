@@ -44,7 +44,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
-  
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :kana_first_name, :kana_last_name, :phone_number])
   end
@@ -63,20 +63,18 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
-  
-  
-  protected
-  def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
-  
-  def after_sign_up_path_for(resource)
-    user_path(@user)
-  end
 
-  def after_update_path_for(resource)
-    user_path(@user)
-  end
+  protected
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
+
+    def after_sign_up_path_for(resource)
+      user_path(@user)
+    end
+
+    def after_update_path_for(resource)
+      user_path(@user)
+    end
 
 end

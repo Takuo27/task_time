@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnNullToUsers < ActiveRecord::Migration[6.1]
   def change
     change_column_null :users, :last_name, false
@@ -9,6 +11,5 @@ class ChangeColumnNullToUsers < ActiveRecord::Migration[6.1]
     change_column_null :users, :exp_sum, false
     change_column_null :users, :is_deleted, false
     change_column_null :users, :birthday, false
-    
   end
 end
