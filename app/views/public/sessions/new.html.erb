@@ -7,17 +7,18 @@
                <div class="card-title"><strong>Please sign in</strong></div>
                  <ul class="list-group list-group-flush">
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                    <li class="list-group-item">
-                        <%= f.label :email, "メールアドレス"%>
-                        <%= f.email_field :email, autofocus: true, :placeholder => "Email address", :class => "form-control" %>
-                    </li>
-                    <li class="list-group-item">
-                        <%= f.label :password, "パスワード" %>
-                        <%= f.password_field :password, :placeholder => "Password", :class => "form-control" %>
-                    </li>
-                    <li class="list-group-item">
-                      <%= f.submit "Sign in", class: "btn btn-primary" %>
-                    </li>
+                      <%= render "devise/shared/error_messages", resource: resource %>
+                        <li class="list-group-item">
+                            <%= f.label :email, "メールアドレス"%>
+                            <%= f.email_field :email, autofocus: true, :placeholder => "Email address", :class => "form-control" %>
+                        </li>
+                        <li class="list-group-item">
+                            <%= f.label :password, "パスワード" %>
+                            <%= f.password_field :password, :placeholder => "Password", :class => "form-control" %>
+                        </li>
+                        <li class="list-group-item">
+                          <%= f.submit "Sign in", class: "btn btn-primary" %>
+                        </li>
                   <% end %>
                 </ul>
              </div>

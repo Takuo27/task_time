@@ -11,7 +11,7 @@
 	</thead>
 	<tbody class="bg-light">
 		<% users.each do |user| %>
-			<%= link_to admin_user_path(user) do %>
+			<%= link_to user_path(user) do %>
 				<tr>
 					<td><%= image_tag user.image, size:'150x150', class: "d-block mx-auto" %></td>
 					<td><%= user.id %></td>
@@ -24,7 +24,7 @@
 							<span class="text-active">有効</span>	
 						<% end %>
 					</td>
-					<td><%= link_to "詳細", admin_user_path(user), class: "btn btn-primary" %></td>
+					<td><%= link_to "詳細", user_path(user), class: "btn btn-primary" %></td>
 				</tr>
 			<% end %>
 		<% end %>

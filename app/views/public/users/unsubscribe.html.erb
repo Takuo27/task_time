@@ -9,7 +9,7 @@
             再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
             本当に退会してよろしいですか？
           </div>
-            <%= link_to '退会しない', mypage_path(@user), class: "card-link" %>
+            <%= link_to '退会しない', user_path(@user), class: "card-link" %>
             <%= link_to "退会する", withdraw_user_path(@user), method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger card-link"%>
         </div>
       </div>

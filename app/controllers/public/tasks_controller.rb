@@ -3,12 +3,12 @@ class Public::TasksController < ApplicationController
   
   # タスク管理画面
   def top
-    @tasks = current_user.tasks.all
-    @user = current_user
-    @level = (current_user.tasks.where(status: 2).count / 10).floor
-    @task_count = current_user.tasks.where(status: 2).count
+    @user = User.find(params[:id])
+    @tasks = @user.tasks.all
+    @level = (@user.tasks.where(status: 2).count / 10).floor
+    @task_count = @user.tasks.where(status: 2).count
     @x = @task_count % 10
-    @achievements = current_user.achievements.all
+    @achievements = @user.achievements.all
     @today_task = @user.tasks.created_today
     @yesterday_task = @user.tasks.created_yesterday
     @this_week_task = @user.tasks.created_this_week
@@ -51,27 +51,25 @@ class Public::TasksController < ApplicationController
   
   # タスク完了ボタン（ステータス）
   def done
-    @task1 = current_user.tasks.where(category: "study")
-    @task2 = current_user.tasks.where(category: "work")
-    @task3 = current_user.tasks.where(category: "life")
-    @task = Task.find(params[:id])
-    @task.user_id = current_user.id
+    @task1 = current_user.tasks.where(category: "study").page(params[:task1_page]).per(2)
+    @task2 = current_user.tasks.where(category: "work").page(params[:task1_page]).per(2)
+    @task3 = current_user.tasks.where(category: "life").page(params[:task1_page]).per(2)
+    @task = Task.find(params[:task_id])
     if @task.status == "waiting"
       @task.update(status: "doing")
       @tasks = Task.all.includes(:user)
-      render :index
+      redirect_to tasks_path
     elsif @task.status == "doing"
       @task.update(status: "finished")
       @tasks = Task.all.includes(:user)
-      render :index
+      redirect_to tasks_path
     else 
       @tasks = Task.all.includes(:user)
-      render :index
+     redirect_to tasks_path
     end
   end
 
   def destroy
-    # byebug
     task = Task.find(params[:id])
     task.user_id = current_user.id
     task.destroy

@@ -2,11 +2,14 @@ class Public::UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :set_current_user
     
+    def index
+        @users = User.page(params[:page]).per(4)
+        @tasks = @user.tasks.all
+    end
     def show
-        @user = current_user
-        @level = (current_user.tasks.where(status: 2).count / 10).floor
-        # @x = @level % 10
-        @task_count = current_user.tasks.where(status: 2).count
+        @user = User.find(params[:id])
+        @level = (@user.tasks.where(status: 2).count / 10).floor
+        @task_count = @user.tasks.where(status: 2).count
         @x = @task_count % 10
     end
     
@@ -16,7 +19,7 @@ class Public::UsersController < ApplicationController
     
     def update
         @user.update(user_params)
-        redirect_to mypage_path(@user.id)
+        redirect_to user_path(@user.id)
     end
     
     
@@ -27,6 +30,17 @@ class Public::UsersController < ApplicationController
         @user.update(is_deleted: true)
         reset_session
         redirect_to root_path
+    end
+    
+    def follows
+        @user = User.find(params[:id])
+        @users = @user.followings.page(params[:page]).per(8)
+    end
+    
+    
+    def followers
+        @user = User.find(params[:id])
+        @users = @user.followers.page(params[:page]).per(8)
     end
     
     private

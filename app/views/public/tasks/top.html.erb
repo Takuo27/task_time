@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-mb-6 col-lg-8 mx-auto text-center">
             <div class="card">
-                <%= image_tag @user.image, class:"card-img-top" %>
+                <%= image_tag @user.image, class: "card-img-top" %>
                 <div class="card-body">
                     <h5 class="card-title">
-                        <%= link_to mypage_path(current_user.id), class: "text-dark" do %>
+                        <%= link_to user_path(@user.id), class: "text-dark" do %>
                             <strong><%= @user.full_name %></strong>
                         <% end %>
                     </h5>
@@ -21,6 +21,18 @@
                             <div class="progress-bar" role="progressbar" style="width: <%= @x * 10 %>%" aria-valuenow="<%= @x * 10 %>" aria-valuemin="0" aria-valuemax="100"><%= @x %></div>
                         </div>
                     </li>
+                    <li class="list-group-item">
+                        フォロー: <%= link_to  @user.followings.count, follows_user_path(@user.id)  %>  フォロワー: <%= link_to @user.followers.count, followers_user_path(@user.id)  %>
+                    </li>
+                    <li class="list-group-item">
+                        <% if current_user != @user%>
+                          <% if current_user.following?(@user) %>
+                            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-info" %>
+                          <% else %>
+                            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+                          <% end %>
+                        <% end %>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -31,8 +43,12 @@
         <div class="col-mb-6 col-lg-8 mx-auto text-center">
             <div class="card">
                 <h5 class="card-header">
-                    <%= link_to achievements_path, class: "text-dark" do %>
+                    <% if current_user != @user %>
                         <strong>目標一覧</strong>
+                    <% else %>
+                        <%= link_to achievements_path, class: "text-dark" do %>
+                            <strong>目標一覧</strong>
+                        <% end %>
                     <% end %>
                 </h5>
                 <div class="card-body">
@@ -50,7 +66,7 @@
                          <tr>
                              <td><%= achievement.name %></td>
                              <td><%= achievement.content %></td>
-                             <td><%= achievement.category %></td>
+                             <td><%= achievement.ja_category %></td>
                              <td>
                                  <%= link_to edit_achievement_path(achievement.id) do %>
                                      <i class="fas fa-edit"></i>
@@ -71,8 +87,12 @@
             <div class="card">
                 <h6 class="card-header"><strong>タスク完了済みの前日比・前週比</strong></h6>
                 <div class="card-body">
-                    <%= link_to tasks_path, class: "text-dark" do %>
+                    <% if current_user != @user %>
                         <i class="fas fa-tasks"></i>タスク一覧
+                    <% else %>
+                        <%= link_to tasks_path, class: "text-dark" do %>
+                            <i class="fas fa-tasks"></i>タスク一覧
+                        <% end %>
                     <% end %>
                     <table class="table table-bordered">
                          <thead>

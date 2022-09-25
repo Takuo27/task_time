@@ -1,48 +1,49 @@
 <main class="bg-secondary">
   <div class="container">
     <div class="row">
-      <div class="col text-center mb-3">
+      <div class="col-mb-6 col-lg-8 mx-auto text-center my-3">
         <div class="card">
-          <div class="card-title">新規会員登録</div>
+          <div class="card-title"><strong>新規会員登録</strong></div>
             <ul class="list-group list-group-flush">
               <%= form_with model: @user, url: user_registration_path do |f| %>
-                <li class="list-group-item">
-                  <%= f.text_field :first_name, autofocus: true, :placeholder =>"姓", :class => "form-control" %>
-                  <%= f.text_field :last_name, :placeholder =>"名", :class => "form-control" %>
-                </li>
-                <li class="list-group-item">
-                  <%= f.text_field :kana_first_name, :placeholder =>"セイ", :class => "form-control" %>
-                  <%= f.text_field :kana_last_name, :placeholder =>"メイ", :class => "form-control" %>
-                </li>
-                <li class="list-group-item">
-                  <%= f.email_field :email, autofocus: true, :placeholder =>'Email', :class => "form-control"  %>
-                </li>
-                <li class="list-group-item">
-                  <%= f.label :phone_number, "電話番号(ハイフンなし10or11桁)" %>
-                  <%= f.text_field :phone_number, :placeholder =>"00011112222", :class => "form-control" %>
-                </li>
-                <li class="list-group-item">
-                  <%= f.label :image, "プロフィール画像：" %>
-                  <%= f.file_field :image, accept: "image/*" %>
-                </li>
-                <li class="list-group-item">
-                  <%= f.label :password, "パスワード" %>
-                  <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em>
-                  <% end %>
-                  <%= f.password_field :password, id: "pass", autocomplete: "new-password", :class => "form-control" %>
-                  <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
-                  パスワードを表示する
-                </li>
-                <li class="list-group-item">
-                  <%= f.label :password_confirmation, "パスワード（確認用）" %></br>
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
-                  <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
-                  パスワードを表示する
-                </li>
-                <li class="list-group-item">
-                  <%= f.submit "新規登録", class: "btn btn-success" %>
-                </li>
+                <%= render "devise/shared/error_messages", resource: resource %>
+                  <li class="list-group-item">
+                    <%= f.text_field :first_name, autofocus: true, :placeholder =>"姓", :class => "form-control" %>
+                    <%= f.text_field :last_name, :placeholder =>"名", :class => "form-control" %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.text_field :kana_first_name, :placeholder =>"セイ", :class => "form-control" %>
+                    <%= f.text_field :kana_last_name, :placeholder =>"メイ", :class => "form-control" %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.email_field :email, autofocus: true, :placeholder =>'Email', :class => "form-control"  %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :phone_number, "電話番号(ハイフンなし10or11桁)" %>
+                    <%= f.text_field :phone_number, :placeholder =>"00011112222", :class => "form-control" %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :image, "プロフィール画像：" %>
+                    <%= f.file_field :image, accept: "image/*" %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :password, "パスワード" %>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %>
+                    <%= f.password_field :password, id: "pass", autocomplete: "new-password", :class => "form-control" %>
+                    <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+                    パスワードを表示する
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.label :password_confirmation, "パスワード（確認用）" %></br>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
+                    <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+                    パスワードを表示する
+                  </li>
+                  <li class="list-group-item">
+                    <%= f.submit "新規登録", class: "btn btn-success" %>
+                  </li>
               <% end %>
             </ul>
         </div>

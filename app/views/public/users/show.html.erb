@@ -1,33 +1,40 @@
- <main class="bg-secondary">
-  <div class="container">
-    <div class="row">
-      <div class="col-mb-6 col-lg-8 mx-auto text-center my-3">
-        <div class="card">
-          <%= image_tag @user.image, class: "rounded-circle img-fluid" %>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              会員ID：<%= @user.id %>
-            </li>
-            <li class="list-group-item">
-              会員名：<%= @user.full_name %>
-            </li>
-            <li class="list-group-item">
-              Level：<%= @level %>
-            </li>
-            <li class="list-group-item">
-              Next level:
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: <%= @x * 10 %>%" aria-valuenow="<%= @x * 10 %>" aria-valuemin="0" aria-valuemax="100"><%= @x %></div>
-              </div>
-            </li>
-          </ul>
-          <div class="card-body text-center">
-            <%= link_to edit_information_path do %>
-               <i class="fas fa-edit"></i>
+ <div class="container">
+  <div class="row">
+    <div class="col-mb-6 col-lg-8 mx-auto text-center my-3">
+      <div class="card">
+        <%= image_tag @user.image, class:"card-img-top" %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            会員ID：<%= @user.id %>
+          </li>
+          <li class="list-group-item">
+            会員名：<%= @user.full_name %>
+          </li>
+          <li class="list-group-item">
+            Level：<%= @level %>
+          </li>
+          <li class="list-group-item">
+            Next level:
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= @x * 10 %>%" aria-valuenow="<%= @x * 10 %>" aria-valuemin="0" aria-valuemax="100"><%= @x %></div>
+            </div>
+          </li>
+          <li class="list-group-item">
+             フォロー: <%= link_to  @user.followings.count, follows_user_path(@user.id)  %>  フォロワー: <%= link_to @user.followers.count, followers_user_path(@user.id)  %>
+          </li>
+        </ul>
+        <div class="card-body text-center">
+          <% if current_user == @user %>
+            <%= link_to edit_user_path do %>
+             <i class="fas fa-edit"></i>
             <% end %>
-          </div>
+          <% else %>
+            <%= link_to top_task_path do %>
+              <i class="fas fa-tasks"></i>タスク管理
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</main> 
+</div>
