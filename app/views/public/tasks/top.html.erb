@@ -1,7 +1,7 @@
 <div class="container my-3 ">
     <!--会員情報-->
     <div class="row">
-        <div class="col-mb-6 col-lg-8 mx-auto text-center">
+        <div class=" col-mb-6 col-lg-8 mx-auto text-center">
             <div class="card">
                 <%= image_tag @user.image, class: "card-img-top" %>
                 <div class="card-body">
@@ -68,9 +68,11 @@
                              <td><%= achievement.content %></td>
                              <td><%= achievement.ja_category %></td>
                              <td>
-                                 <%= link_to edit_achievement_path(achievement.id) do %>
-                                     <i class="fas fa-edit"></i>
-                                 <% end %>
+                                 <% if current_user == @user%>
+                                     <%= link_to edit_achievement_path(achievement.id) do %>
+                                         <i class="fas fa-edit"></i>
+                                     <% end %>
+                                <% end %>
                              </td>
                          </tr>
                          <% end %>
