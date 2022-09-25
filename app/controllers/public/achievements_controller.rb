@@ -6,14 +6,16 @@ class Public::AchievementsController < ApplicationController
   def new
     @achievement = Achievement.new
   end
-
+  
+  # 目標新規登録
   def create
     @achievement = Achievement.new(achievement_params)
     @achievement.user_id = current_user.id
     @achievement.save
     redirect_to achievements_path
   end
-
+  
+  # 目標一覧画面
   def index
     @user = current_user
     @achievements = current_user.achievements.all
@@ -22,10 +24,12 @@ class Public::AchievementsController < ApplicationController
     @achievement3 = current_user.achievements.where(category: "life").page(params[:achievement3_page]).per(3)
   end
 
+  # 目標編集画面
   def edit
     @achievement = Achievement.find(params[:id])
   end
 
+  # 
   def update
     @achievement = Achievement.find(params[:id])
     @achievement.update(achievement_params)

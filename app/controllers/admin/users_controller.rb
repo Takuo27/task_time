@@ -9,9 +9,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-  @user = User.find(params[:id])
-  @tasks = Task.all
-  @level = (@user.tasks.where(status: 2).count / 10).floor
+    @user = User.find(params[:id])
+    @tasks = Task.all
+    @level = (@user.tasks.where(status: 2).count / 10).floor
+  end
+  
+  def edit
+    
   end
 
   def update
@@ -21,7 +25,18 @@ class Admin::UsersController < ApplicationController
       render "edit"
     end
   end
-
+  
+  
+  def withdraw
+    @user = User.find(params[:user_id])
+    if @user.is_deleted == false
+      @user.update(is_deleted: true)
+      redirect_to admin_users_path
+    else
+      render "edit"
+    end
+  end
+  
   private
   def update_resource(resource, params)
     resource.update_without_password(params)
