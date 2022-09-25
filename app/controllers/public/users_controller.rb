@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
         @user = User.find(params[:id])
         @level = (@user.tasks.where(status: 2).count / 10).floor
         @task_count = @user.tasks.where(status: 2).count
-        @x = @task_count % 10
+        @next_level = @task_count % 10
     end
 
     def edit

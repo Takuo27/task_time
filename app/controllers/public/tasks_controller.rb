@@ -9,7 +9,7 @@ class Public::TasksController < ApplicationController
     @tasks = @user.tasks.all
     @level = (@user.tasks.where(status: 2).count / 10).floor
     @task_count = @user.tasks.where(status: 2).count
-    @x = @task_count % 10
+    @next_level = @task_count % 10
     @achievements = @user.achievements.all
     @today_task = @user.tasks.created_today
     @yesterday_task = @user.tasks.created_yesterday
