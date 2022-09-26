@@ -5,6 +5,11 @@ class Task < ApplicationRecord
 
     enum category: { study: 0, work: 1, life: 2 }
     enum status: { waiting: 0, doing: 1, finished: 2 }
+    
+    
+    validates :content, presence: true
+    validates :name, presence: true
+    validates :start_time, presence: true
 
     scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
     scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) } # 前日
