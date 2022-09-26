@@ -14,7 +14,6 @@
 
 ## URL
 【管理者アカウント】
-URL:  
 メールアドレス：admin@admin.com  
 パスワード：adminadmin
 
@@ -35,20 +34,20 @@ Ex）プライベートの場合、「筋トレ　1日10回」等
 
 ## 設計書
 ・ワイヤーフレーム  
-・画面遷移図  
+・[画面遷移図](https://app.diagrams.net/#G14FvTt1XZYmvv6UqIOIXSuHBhvN4GMqe5)  
 ・[テーブル提議書](https://docs.google.com/spreadsheets/d/1nofpEUcKz5oA7co8C4JOU-B0dAHgzcbl/edit#gid=1711571761)  
 ・[ER図](https://app.diagrams.net/#G1FpkioD-yJzAodXQwFFvwIYPfuId17EQM)
 
 ## 機能一覧
 * ログイン機能（会員・管理者）
-    * 日本語化（devise-i18n）
-*　　管理者機能
-    * 会員退会機能（論理削除）
-*　　投稿機能
-    * カレンダー機能
+    * 日本語化（devise-i18n） 
 * ページネーション機能（kaminari）
     * タスク・フォロー・フォロワー・会員等の一覧ページに実装
 * フォロー/フォロワー機能
+* 管理者機能
+    * 会員退会機能（論理削除）
+* 投稿機能
+    * カレンダー機能（タスクをカレンダーで管理）
 
 ## 開発環境
 ・ OS：Linux(CentOS)　　  
