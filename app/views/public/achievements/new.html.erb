@@ -9,21 +9,22 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <%= form_with model: @achievement, url: achievements_path, method: :post do |f| %>
-                            <li class="list-group-item">
-                                <%= f.label :name, '目標名：' %>
-                                <%= f.text_field :name, autofocus: true, :placeholder => "目標名", :class => "form-control" %>
-                            </li>
-                            <li class="list-group-item">
-                                <%= f.label :content, '内容：' %>
-                                <%= f.text_area :content, autofocus: true, :placeholder => '内容', :class => "form-control" %>
-                            </li>
-                            <li class="list-group-item">
-                                <%= f.label :category, 'カテゴリー：' %>
-                                <%= f.select :category, Achievement.categories.keys.map {|k| [I18n.t("enums.achievement.category.#{k}"), k]} %>
-                            </li>
-                            <li class="list-group-item">
-                                <%= f.submit '新規登録', class: 'btn btn-success' %>
-                            </li>
+                            <%= render 'layouts/error_messages', object: @achievement %>
+                                <li class="list-group-item">
+                                    <%= f.label :name, '目標名：' %>
+                                    <%= f.text_field :name, autofocus: true, :placeholder => "目標名", :class => "form-control" %>
+                                </li>
+                                <li class="list-group-item">
+                                    <%= f.label :content, '内容：' %>
+                                    <%= f.text_area :content, autofocus: true, :placeholder => '内容', :class => "form-control" %>
+                                </li>
+                                <li class="list-group-item">
+                                    <%= f.label :category, 'カテゴリー：' %>
+                                    <%= f.select :category, Achievement.categories.keys.map {|k| [I18n.t("enums.achievement.category.#{k}"), k]} %>
+                                </li>
+                                <li class="list-group-item">
+                                    <%= f.submit '新規登録', class: 'btn btn-success' %>
+                                </li>
                         <% end %>
                     </ul>
                 </div>
