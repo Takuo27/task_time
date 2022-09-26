@@ -18,8 +18,14 @@
 パスワード：adminadmin
 
 【会員テストアカウント】  
-メールアドレス：  
-パスワード：  
+1)  メールアドレス： takuya@takuya.com  
+パスワード：  takuyatakuya
+2)  メールアドレス： sato@sato.com  
+パスワード：  satosato
+3)  メールアドレス： kato@kato.com  
+パスワード：  katokato
+4)  メールアドレス： matsumoto@matsumoto.com  
+パスワード：  matsumotomatsumoto
 
 ### ターゲットユーザ
 ・勉強を習慣したい方  
@@ -33,7 +39,6 @@ Ex）プライベートの場合、「筋トレ　1日10回」等
 ・勉強等でモチベーションが上がらない時  
 
 ## 設計書
-・ワイヤーフレーム  
 ・[画面遷移図](https://app.diagrams.net/#G14FvTt1XZYmvv6UqIOIXSuHBhvN4GMqe5)  
 ・[テーブル提議書](https://docs.google.com/spreadsheets/d/1nofpEUcKz5oA7co8C4JOU-B0dAHgzcbl/edit#gid=1711571761)  
 ・[ER図](https://app.diagrams.net/#G1FpkioD-yJzAodXQwFFvwIYPfuId17EQM)
@@ -48,7 +53,16 @@ Ex）プライベートの場合、「筋トレ　1日10回」等
     * 会員退会機能（論理削除）
 * 投稿機能
     * カレンダー機能（タスクをカレンダーで管理）
+* コード解析（Rubocop）
 
+## フロントエンド
+* Bootstrap 4.5  
+* JavaScript、jQuery
+
+## バックエンド
+* Ruby 3.1.2
+* Rails  6.1.6.1  
+  
 ## 開発環境
 ・ OS：Linux(CentOS)　　  
 ・言語：HTML,CSS,JavaScript,Ruby,SQL　　    
