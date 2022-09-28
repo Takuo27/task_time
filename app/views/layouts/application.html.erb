@@ -15,9 +15,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-dark bg-dark fixed-top" style="height: 100px" >
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 100px" >
         <div class="container-fluid">
-            <a class="navbar-brand fonts" href="/">TaskTime </a>
+            <a class="navbar-brand fonts ml-3" href="/"><strong>TaskTime</strong></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,31 +28,31 @@
               <% if user_signed_in? %>
                   <li class="nav-item">
                     <%= link_to user_path(current_user.id), class: "text-light" do %>
-                      <i class="fas fa-user"></i>マイページ
+                      <i class="fas fa-user"></i>マイページ 
                     <% end %>
                   </li>
                   
                   <li class="nav-item">
-                      <%= link_to users_path, class: "text-light" do %>
-                          <i class="fas fa-users"></i>会員一覧
+                      <%= link_to users_path, class: "text-light ml-3" do %>
+                          <i class="fas fa-users"></i>会員一覧 
                       <% end %>
                   </li>
               
                   <li class="nav-item">
-                   <%= link_to top_task_path(current_user.id), class: "text-light" do %>
-                      <i class="fas fa-tasks"></i>タスク管理
+                   <%= link_to top_task_path(current_user.id), class: "text-light  ml-3" do %>
+                      <i class="fas fa-tasks"></i>タスク管理 
                    <% end %>
                   </li>
                   
                   <li class="nav-item">
-                    <%= link_to achievements_path, class: "text-light" do %>
-                      <i class="fas fa-dot-circle"></i>目標一覧
+                    <%= link_to achievements_path, class: "text-light  ml-3" do %>
+                      <i class="fas fa-dot-circle"></i>目標一覧 
                     <% end %>
                   </li>
                   
                   <li class="nav-item">
-                    <%= link_to destroy_user_session_path, method: :delete, class: "text-light" do %>
-                        <i class="fas fa-sign-out-alt"></i>ログアウト
+                    <%= link_to destroy_user_session_path, method: :delete, class: "text-light ml-3" do %>
+                        <i class="fas fa-sign-out-alt"></i>ログアウト 
                     <% end %>
                    </li>
                   
@@ -60,34 +60,34 @@
               <% elsif admin_signed_in? %>
               
                   <li class="nav-item">
-                   <%= link_to admin_users_path, class: "text-light" do %>
-                       <i class="fas fa-users"></i>会員一覧
+                   <%= link_to admin_users_path, class: "text-light ml-3" do %>
+                       <i class="fas fa-users"></i>会員一覧 
                    <% end %>
                   </li>
                   
                   <li class="nav-item">
-                   <%= link_to destroy_admin_session_path, method: :delete, class: "text-light" do %>
-                     <i class="fas fa-sign-out-alt"></i>ログアウト
+                   <%= link_to destroy_admin_session_path, method: :delete, class: "text-light  ml-3" do %>
+                     <i class="fas fa-sign-out-alt"></i>ログアウト 
                    <% end %>
                   </li>
                   
              <% else %>
                 
                   <li class="nav-item">
-                     <%= link_to about_path, class: "text-light" do %>
-                         <i class="fas fa-link"></i>アバウト
+                     <%= link_to about_path, class: "text-light ml-3" do %>
+                         <i class="fas fa-link"></i>アバウト 
                      <% end %>
                   </li>
                   
                   <li class="nav-item">
-                     <%= link_to new_user_registration_path, class: "text-light" do %>
-                         <i class="fas fa-user-plus"></i>新規登録
+                     <%= link_to new_user_registration_path, class: "text-light ml-3" do %>
+                         <i class="fas fa-user-plus"></i>新規登録 
                      <% end %>
                   </li>
                     
                   <li class="nav-item">
-                     <%= link_to new_user_session_path, class: "text-light" do %>
-                          <i class="fas fa-sign-in-alt"></i>ログイン
+                     <%= link_to new_user_session_path, class: "text-light ml-3" do %>
+                          <i class="fas fa-sign-in-alt"></i>ログイン 
                      <% end %>
                   </li>
                   
