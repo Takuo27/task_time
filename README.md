@@ -18,8 +18,8 @@
 パスワード：adminadmin
 
 【会員テストアカウント】  
-1)  メールアドレス： takuya@takuya.com  
-パスワード：  takuyatakuya
+1)  メールアドレス： sasai@sasai.com  
+パスワード：  sasaisasai
 2)  メールアドレス： sato@sato.com  
 パスワード：  satosato
 3)  メールアドレス： kato@kato.com  
