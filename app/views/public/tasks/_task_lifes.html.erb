@@ -9,9 +9,9 @@
     </thead>
     <tbody>
       
-       <!--カテゴリー（仕事）-->
-      <div class="category bg-danger">仕事</div>
-        <% task2.each do |task| %>
+       <!--カテゴリー（プライベート）-->
+      <div class="category bg-primary">プライベート</div>
+        <% task_lifes.each do |task| %>
           <tr>
           <td><%= task.name %></td>
           <td><%= task.content %></td>
@@ -22,7 +22,7 @@
             <% end %>
           </td>
           <td>
-             <%= link_to task, method: :delete, data: { confirm: '本当に消しますか？' } do %>
+            <%= link_to task, method: :delete, data: { confirm: '本当に消しますか？' } do %>
                 <i class="fas fa-trash"></i>
             <% end %>
           </td>
@@ -32,8 +32,8 @@
                <td><%= button_to '実行中', task_done_path(task), method: :post %></td>
           <% else %>
               <td><strogn>完了</strogn></td>
-          <% end %>
+           <% end %>
       <% end %>
-       <%= paginate task2, param_name: :task2_page %>
+       <%= paginate task_lifes, param_name: :task_lifes_page %>
     </tbody>
 </table>

@@ -25,13 +25,13 @@
            <!--タブで選択された要素部分-->
           <div class="tabbox-contents">
             <div class="tabbox box-show">
-              <%= render 'task1', task1: @task1 %>
+              <%= render 'task_studies', task_studies: @task_studies %>
             </div>
             <div class="tabbox">
-              <%= render 'task2', task2: @task2 %>
+              <%= render 'task_works', task_works: @task_works %>
             </div>
             <div class="tabbox">
-              <%= render 'task3', task3: @task3 %>
+              <%= render 'task_lifes', task_lifes: @task_lifes %>
             </div>
           </div>
           <%= link_to new_task_path do %>

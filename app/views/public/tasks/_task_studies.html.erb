@@ -9,9 +9,9 @@
     </thead>
     <tbody>
       
-       <!--カテゴリー（プライベート）-->
-      <div class="category bg-primary">プライベート</div>
-        <% task3.each do |task| %>
+       <!--カテゴリー（勉強）-->
+      <div class="category bg-success">勉強</div>
+        <% task_studies.each do |task| %>
           <tr>
           <td><%= task.name %></td>
           <td><%= task.content %></td>
@@ -26,14 +26,15 @@
                 <i class="fas fa-trash"></i>
             <% end %>
           </td>
-          <% if task.status == "waiting" %>
+            <% if task.status == "waiting" %>
               <td><%= button_to '開始', task_done_path(task), method: :post %></td>
-          <% elsif task.status == "doing" %> 
+            <% elsif task.status == "doing" %> 
                <td><%= button_to '実行中', task_done_path(task), method: :post %></td>
-          <% else %>
+            <% else %>
               <td><strogn>完了</strogn></td>
            <% end %>
       <% end %>
-       <%= paginate task3, param_name: :task3_page %>
+      <%= paginate task_studies, param_name: :task_studies_page %>
     </tbody>
 </table>
+   

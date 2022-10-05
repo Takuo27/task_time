@@ -24,13 +24,13 @@
                <!--タブで選択された要素部分-->
                 <div class="tabbox-contents">
                   <div class="tabbox box-show">
-                    <%= render 'achievement1', achievement1: @achievement1 %>
+                    <%= render 'achievement_studies', achievement_studies: @achievement_studies %>
                   </div>
                   <div class="tabbox">
-                    <%= render 'achievement2', achievement2: @achievement2 %>
+                    <%= render 'achievement_works', achievement_works: @achievement_works %>
                   </div>
                   <div class="tabbox">
-                    <%= render 'achievement3', achievement3: @achievement3 %>
+                    <%= render 'achievement_lifes', achievement_lifes: @achievement_lifes %>
                   </div>
                 </div>
                   <%= link_to new_achievement_path do %>

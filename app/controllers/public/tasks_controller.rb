@@ -22,9 +22,9 @@ class Public::TasksController < ApplicationController
     @user = current_user
     @tasks = current_user.tasks.all
     @task = Task.new
-    @task1 = current_user.tasks.where(category: "study").page(params[:task1_page]).per(2)
-    @task2 = current_user.tasks.where(category: "work").page(params[:task2_page]).per(2)
-    @task3 = current_user.tasks.where(category: "life").page(params[:task3_page]).per(2)
+    @task_studies = current_user.tasks.where(category: "study").page(params[:task_studies_page]).per(2)
+    @task_works = current_user.tasks.where(category: "work").page(params[:task_works_page]).per(2)
+    @task_lifes = current_user.tasks.where(category: "life").page(params[:task_lifes_page]).per(2)
   end
 
   # タスク新規登録画面
@@ -53,9 +53,9 @@ class Public::TasksController < ApplicationController
 
   # タスク完了ボタン（ステータス）
   def done
-    @task1 = current_user.tasks.where(category: "study").page(params[:task1_page]).per(2)
-    @task2 = current_user.tasks.where(category: "work").page(params[:task1_page]).per(2)
-    @task3 = current_user.tasks.where(category: "life").page(params[:task1_page]).per(2)
+    @task_studies = current_user.tasks.where(category: "study").page(params[:task_studies_page]).per(2)
+    @task_works = current_user.tasks.where(category: "work").page(params[:task_works_page]).per(2)
+    @task_lifes = current_user.tasks.where(category: "life").page(params[:task_lifes_page]).per(2)
     @task = Task.find(params[:task_id])
     if @task.status == "waiting"
       @task.update(status: "doing")

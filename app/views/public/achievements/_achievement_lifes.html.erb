@@ -10,7 +10,7 @@
       
        <!--カテゴリー（プライベート）-->
       <div class="category bg-primary"><strong>プライベート</strong></div>
-        <% achievement3.each do |achievement| %>
+        <% achievement_lifes.each do |achievement| %>
           <tr>
           <td><%= achievement.name %></td>
           <td><%= achievement.content %></td>
@@ -26,6 +26,6 @@
           </td>
           
       <% end %>
-      <%= paginate achievement3, param_name: :achievement3_page %>
+      <%= paginate achievement_lifes, param_name: :achievement_lifes_page %>
     </tbody>
 </table>

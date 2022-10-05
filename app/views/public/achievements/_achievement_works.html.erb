@@ -10,7 +10,7 @@
     
      <!--カテゴリー（仕事）-->
     <div class="category bg-danger"><strong>仕事</strong></div>
-      <% achievement2.each do |achievement| %>
+      <% achievement_works.each do |achievement| %>
         <tr>
         <td><%= achievement.name %></td>
         <td><%= achievement.content %></td>
@@ -26,6 +26,6 @@
         </td>
         
       <% end %>
-    <%= paginate achievement2, param_name: :achievement2_page %>
+    <%= paginate achievement_works, param_name: :achievement_works_page %>
   </tbody>
 </table>

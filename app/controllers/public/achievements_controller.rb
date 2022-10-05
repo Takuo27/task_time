@@ -19,9 +19,9 @@ class Public::AchievementsController < ApplicationController
   def index
     @user = current_user
     @achievements = current_user.achievements.all
-    @achievement1 = current_user.achievements.where(category: "study").page(params[:achievement1_page]).per(3)
-    @achievement2 = current_user.achievements.where(category: "work").page(params[:achievement2_page]).per(3)
-    @achievement3 = current_user.achievements.where(category: "life").page(params[:achievement3_page]).per(3)
+    @achievement_studies = current_user.achievements.where(category: "study").page(params[:achievement_studies_page]).per(3)
+    @achievement_works = current_user.achievements.where(category: "work").page(params[:achievement_works_page]).per(3)
+    @achievement_lifes = current_user.achievements.where(category: "life").page(params[:achievement_lifes_page]).per(3)
   end
 
   # 目標編集画面
