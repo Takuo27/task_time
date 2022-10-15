@@ -53,31 +53,31 @@
                 </h5>
                 <div class="card-body">
                     <table class='table table-hover table-inverse'>
-                     <thead>
-                         <tr>
-                             <th>目標名</th>
-                             <th>内容</th>
-                             <th>カテゴリー</th>
-                             <th colspan="3"></th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <% @achievements.each do |achievement| %>
-                         <tr>
-                             <td><%= achievement.name %></td>
-                             <td><%= achievement.content %></td>
-                             <td><%= achievement.ja_category %></td>
-                             <td>
-                                 <% if current_user == @user%>
-                                     <%= link_to edit_achievement_path(achievement.id) do %>
-                                         <i class="fas fa-edit"></i>
-                                     <% end %>
-                                <% end %>
-                             </td>
-                         </tr>
-                         <% end %>
-                     </tbody>
-                 </table>
+                         <thead>
+                             <tr>
+                                 <th>目標名</th>
+                                 <th>内容</th>
+                                 <th>カテゴリー</th>
+                                 <th colspan="3"></th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <% @achievements.each do |achievement| %>
+                             <tr>
+                                 <td><%= achievement.name %></td>
+                                 <td><%= achievement.content %></td>
+                                 <td><%= achievement.ja_category %></td>
+                                 <td>
+                                     <% if current_user == @user%>
+                                         <%= link_to edit_achievement_path(achievement.id) do %>
+                                             <i class="fas fa-edit"></i>
+                                         <% end %>
+                                    <% end %>
+                                 </td>
+                             </tr>
+                             <% end %>
+                         </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -142,29 +142,29 @@
                             <% end %>
                           </tr>
                         </tbody>
-                  </table>
-                   <table class="table">
+                    </table>
+                    <table class="table">
                        <thead>
-                        <tr>
-                         <th>６日前</th>
-                         <th>5日前</th>
-                         <th>4日前</th>
-                         <th>3日前</th>
-                         <th>２日前</th>
-                         <th>昨日</th>
-                         <th>今日</th>
-                        </tr>
-                       </thead>
-                       <tbody>
-                        <tr>
-                         <th><%= @tasks.where(status: 2).created_6days.count %></th>
-                         <th><%= @tasks.where(status: 2).created_5days.count %></th>
-                         <th><%= @tasks.where(status: 2).created_4days.count %></th>
-                         <th><%= @tasks.where(status: 2).created_3days.count %></th>
-                         <th><%= @tasks.where(status: 2).created_2days.count %></th>
-                         <th><%= @yesterday_task.where(status: 2).count %></th>
-                         <th><%= @today_task.where(status: 2).count %></th>
-                        </tr>
+                            <tr>
+                                 <th>６日前</th>
+                                 <th>5日前</th>
+                                 <th>4日前</th>
+                                 <th>3日前</th>
+                                 <th>２日前</th>
+                                 <th>昨日</th>
+                                 <th>今日</th>
+                            </tr>
+                           </thead>
+                           <tbody>
+                            <tr>
+                                 <th><%= @tasks.where(status: 2).created_6days.count %></th>
+                                 <th><%= @tasks.where(status: 2).created_5days.count %></th>
+                                 <th><%= @tasks.where(status: 2).created_4days.count %></th>
+                                 <th><%= @tasks.where(status: 2).created_3days.count %></th>
+                                 <th><%= @tasks.where(status: 2).created_2days.count %></th>
+                                 <th><%= @yesterday_task.where(status: 2).count %></th>
+                                 <th><%= @today_task.where(status: 2).count %></th>
+                            </tr>
                        </tbody>
                   </table>
                 </div>

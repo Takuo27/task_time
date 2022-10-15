@@ -1,47 +1,47 @@
 <!--目標一覧-->
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-mb-6 col-lg-8 mx-auto text-center my-3">
-        <div class="card">
-          <div class="card-header"><strong>目標一覧</strong></div>
-          <div class="card-body">
-            <ul class="tab-list list-unstyled">
-                <li class="tab tab-active list-inline-item">
-                  勉強
-                </li>
-                <li class="tab list-inline-item">
-                  仕事
-                </li>
-                <li class="tab list-inline-item">
-                  プライベート
-                </li>
-              </ul>
-          </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-mb-6 col-lg-8 mx-auto text-center my-3">
+      <div class="card">
+        <div class="card-header"><strong>目標一覧</strong></div>
+        <div class="card-body">
+          <ul class="tab-list list-unstyled">
+              <li class="tab tab-active list-inline-item">
+                勉強
+              </li>
+              <li class="tab list-inline-item">
+                仕事
+              </li>
+              <li class="tab list-inline-item">
+                プライベート
+              </li>
+            </ul>
         </div>
-        <div class="col mt-5">
-          <div class="card">
-            <div class="card-body">
-               <!--タブで選択された要素部分-->
-                <div class="tabbox-contents">
-                  <div class="tabbox box-show">
-                    <%= render 'achievement_studies', achievement_studies: @achievement_studies %>
-                  </div>
-                  <div class="tabbox">
-                    <%= render 'achievement_works', achievement_works: @achievement_works %>
-                  </div>
-                  <div class="tabbox">
-                    <%= render 'achievement_lifes', achievement_lifes: @achievement_lifes %>
-                  </div>
+      </div>
+      <div class="col mt-5">
+        <div class="card">
+          <div class="card-body">
+             <!--タブで選択された要素部分-->
+              <div class="tabbox-contents">
+                <div class="tabbox box-show">
+                  <%= render 'achievement_studies', achievement_studies: @achievement_studies %>
                 </div>
-                  <%= link_to new_achievement_path do %>
-                    <i class="fas fa-plus"></i>
-                  <% end %>
-            </div>
+                <div class="tabbox">
+                  <%= render 'achievement_works', achievement_works: @achievement_works %>
+                </div>
+                <div class="tabbox">
+                  <%= render 'achievement_lifes', achievement_lifes: @achievement_lifes %>
+                </div>
+              </div>
+                <%= link_to new_achievement_path do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
   
 <!--タブの切り替え-->
 <script>
